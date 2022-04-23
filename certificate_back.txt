@@ -1,0 +1,36 @@
+자격증 필요한 것들.
+
+1. 생성.
+2. 로딩시 깔아주기  ---  비엔나소시지식으로
+3. 수정(변경). + 삭제기능은 여기에 넣으면 될듯..? 어떻게 넣을까?
+4. 갱신(날짜만 수정.) 마지막 날짜를 뒤로 미룰수만 있게 구현 필요.
+   ---   추후 AI프로젝트에서 자격증을 인식하고 적혀진 날짜를 업데이트 해주는 기능을 넣으면..
+
+
+1. 이중등록 체크.  ---  생성과 수정에 적용되야 함.  ---  같은 이름의 다른 자격증일 경우 구분을 지을 방법은?
+2. 수정(변경) 내의 삭제기능.  ---  front? ㄴㄴ 버튼으로 요청이 들어올 시 id를 지우면 됨.
+3. 갱신 및 폐기는 한번에 묶어야하나?
+4. 날짜가 지났을 시 폐기(빨간줄 혹은 회색글씨로 바뀌는 기능).... 
+   ---   프론트쪽인가? ㄴㄴ backend에서 처리가 맞음.. 생성단계에서 restriction을 줘야 하는 문제인듯?
+
+5. 또다른 login_required를 만들 필요성?
+   ---   개인정보에 대한 편집가능과 열람가능을 구분할 필요성에 의해.   ---   보류!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+========sevice에 구현할 것.==========
+addCertificate({user_id,title,description,expired_date}) (추가)
+getCertificateInfo(user_id) (나열)
+setCertificate(certificate_id, {title, description, expired_date}) (변경/업데이트)
+set2Certificate(certificate_id, expired_date) (날짜 갱신)
+deleteCertificate(certificate_id) (삭제)   ---   보류!!!!!!!!!!!!!!!!!!
+
+
+add와 set에는 중복 확인이 들어가야 함.
+
+findByTitle({title})  ===========중복된 이름을 가진 자격증이 있는지 체크하기 위한 매소드.
+create({data}) .. data = {user_id,id,title,description,expired_date} ====== 자격증 생성
+findByUserId({user_id}) ===========같은 user_id를 가진 모든 정보를 가져오기.
+findById({certificate_id}) ========= 자격증 업데이트때 쓰임.. 고유 아이디로 자격증 불러오기.
+update({certificate_id, "이름", 새 값})   ==========업데이트용.
+
+
